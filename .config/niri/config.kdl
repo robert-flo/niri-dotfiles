@@ -271,8 +271,9 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-spawn-at-startup "key" "shell" "--daemon"
-spawn-at-startup "key" "clipboard" "--daemon" 
+// Clavis shell and clipboard are started by clavis-shell.service and
+// clavis-clipboard.service (enabled by niri-dotfiles-postinstall).
+// Spawning them here as well runs a second bar.
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
