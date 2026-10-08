@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# Post-install steps for niri-dotfiles that cannot live in tracked files.
+# Idempotent: safe to run more than once.
+set -euo pipefail
+
+say() { printf '==> %s\n' "$*"; }
+warn() { printf 'WARN: %s\n' "$*" >&2; }
+
+: "${XDG_RUNTIME_DIR:=/run/user/$(id -u)}"
+export XDG_RUNTIME_DIR
+if [[ -z "${DBUS_SESSION_BUS_ADDRESS:-}" && -S "$XDG_RUNTIME_DIR/bus" ]]; then
+    export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+fi
+
+# Clavis config.json and obsidian.json need absolute paths; the repo ships them for /home/niri.
+say "Adapting absolute paths to $HOME"
+for f in "$HOME/.config/clavis/config.json" "$HOME/.config/obsidian/obsidian.json"; do
+    [[ -f "$f" ]] || continue
+    if [[ "$HOME" != /home/niri ]] && grep -q '/home/niri' "$f"; then
+        sed -i "s|/home/niri|$HOME|g" "$f"
+        echo "    $f"
+    fi
+done
+
+say "GTK, icon and cursor settings (gsettings)"
+if [[ -n "${DBUS_SESSION_BUS_ADDRESS:-}" ]] && command -v gsettings >/dev/null; then
+    gsettings set org.gnome.desktop.interface gtk-theme 'MacTahoe-Dark'
+    gsettings set org.gnome.desktop.interface icon-theme 'MacTahoe-dark'
+    gsettings set org.gnome.desktop.interface cursor-theme 'MacTahoe-dark-cursors'
+    gsettings set org.gnome.desktop.interface cursor-size 24
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+else
+    warn "no D-Bus session bus; run again from inside a session to apply gsettings"
+fi
+
+say "Clavis systemd user services"
+if systemctl --user show-environment >/dev/null 2>&1; then
+    for unit in clavis-shell.service clavis-clipboard.service; do
+        if systemctl --user cat "$unit" >/dev/null 2>&1; then
+            systemctl --user enable "$unit" >/dev/null 2>&1 && echo "    enabled $unit"
+        else
+            warn "$unit not installed"
+        fi
+    done
+else
+    warn "no systemd user manager; enable later: systemctl --user enable clavis-shell.service clavis-clipboard.service"
+fi
+
+say "Folders"
+mkdir -p "$HOME/Pictures/mpv"
+
+say "Matugen colors from the current wallpaper"
+cfg="$HOME/.config/clavis/config.json"
+gen=/etc/xdg/quickshell/clavis/scripts/theme/generate_matugen_colors.sh
+if [[ -x "$gen" && -f "$cfg" ]] && command -v jq >/dev/null; then
+    wp=$(jq -r '.wallpaper.path // empty' "$cfg")
+    templates=$(jq -r '.theme.matugenTemplates // {} | to_entries | map(select(.value == true) | .key) | join(",")' "$cfg")
+    if [[ -f "$wp" && -n "$templates" ]]; then
+        "$gen" --image "$wp" --mode dark --templates "$templates" | grep -v '^{' || true
+    else
+        warn "wallpaper or templates not found; skipped"
+    fi
+else
+    warn "Clavis or jq not available; skipped"
+fi
+
+say "Validating niri config"
+niri validate -c "$HOME/.config/niri/config.kdl"
+say "Done. Log out and choose the Niri session."
