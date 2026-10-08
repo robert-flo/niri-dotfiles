@@ -23,6 +23,8 @@ Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare):
 | `.config/thunderbird/` | perfil con tema CSS (`chrome/`) y `user.js` (solo tema, sin datos de correo) |
 | `.config/obsidian/`, `Documents/Notas/.obsidian/` | tema Violet de Obsidian (solo apariencia, sin notas) |
 | `.local/share/clavis/wallpapers/` | dos wallpapers |
+| `.icons/default/index.theme` | cursor MacTahoe por defecto para apps que no reciben `XCURSOR_THEME` |
+| `.local/bin/niri-dotfiles-postinstall` | pasos posteriores a la instalación (ver abajo) |
 
 ## Requisitos
 
@@ -38,15 +40,24 @@ export DOTBARE_DIR="$HOME/.cfg" DOTBARE_TREE="$HOME"
 dotbare finit -u https://github.com/robert-flo/niri-dotfiles.git
 ```
 
-`finit -u` respalda los archivos existentes que entren en conflicto antes de hacer checkout.
+`finit -u` respalda los archivos existentes que entren en conflicto (en `~/.local/share/dotbare/`) antes de hacer checkout.
 
-Después:
+Después, una vez:
 
 ```bash
-niri validate -c ~/.config/niri/config.kdl
+~/.local/bin/niri-dotfiles-postinstall
 ```
 
-Al iniciar sesión, Clavis regenera los colores desde el wallpaper (focus ring de niri, fcitx5 y fish).
+El script es idempotente y hace lo que no puede vivir en archivos versionados:
+
+- adapta a tu `$HOME` las rutas absolutas de `~/.config/clavis/config.json` (wallpaper) y `~/.config/obsidian/obsidian.json` (vault);
+- aplica `gsettings`: tema GTK, iconos, cursor, modo oscuro y botones a la izquierda;
+- habilita los servicios de usuario `clavis-shell.service` y `clavis-clipboard.service`;
+- crea `~/Pictures/mpv` (capturas de mpv);
+- genera los colores Matugen desde el wallpaper (focus ring de niri, fcitx5 y fish);
+- valida la configuración de niri.
+
+Si se ejecuta fuera de una sesión gráfica, avisa de lo que no pudo aplicar; basta con volver a ejecutarlo dentro de la sesión. Al cambiar el wallpaper desde Clavis, los colores se regeneran solos.
 
 ## Notas
 
