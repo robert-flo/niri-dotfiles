@@ -1,0 +1,17 @@
+{
+  "wallpaper": {
+    "folder": "/home/niri/.local/share/clavis/wallpapers",
+    "path": "/home/niri/.local/share/clavis/wallpapers/wallhaven-5y3571.jpg"
+  },
+  "theme": {
+    "matugenTemplates": {
+      "fcitx5_theme": true,
+      "fcitx5_panel": true,
+      "fcitx5_highlight": true,
+      "fcitx5_radio": true,
+      "fcitx5_arrow": true,
+      "clavis_fish": true,
+      "niri_focus_ring": true
+    }
+  }
+}

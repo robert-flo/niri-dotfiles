@@ -1,0 +1,655 @@
+@charset "UTF-8";
+/*!
+ * Violet — MIT License
+ * Copyright (c) 2026 StatIndet
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * MacTahoe GTK title-button assets (embedded below)
+ * Source: https://github.com/vinceliuice/MacTahoe-gtk-theme
+ * Copyright (c) 2021 WhiteSur Developers
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+body.mod-linux:not(.is-mobile) {
+  background-color: var(--violet-shell);
+  --violet-gap: 10px;
+  --violet-status-clearance: 26px;
+  --violet-topbar-height: 48px;
+  --violet-controls-width: 94px;
+  --violet-tab-controls-space: 104px;
+  --violet-main-radius: 16px;
+  --violet-control-radius: 8px;
+  --violet-float-radius: 12px;
+  --violet-side-dot: color-mix(in srgb, var(--text-muted) 42%, transparent);
+  --violet-accent-soft: color-mix(in srgb, var(--interactive-accent) 13%, transparent);
+  --violet-accent-line: color-mix(in srgb, var(--interactive-accent) 38%, transparent);
+  --violet-resize-line: color-mix(in srgb, var(--interactive-accent) 58%, transparent);
+}
+
+body.theme-dark.mod-linux:not(.is-mobile) {
+  --violet-shell: #26252b;
+  --violet-main: #1c1c1c;
+  --violet-overlay: rgb(39 38 45 / 0.88);
+  --violet-line: #ffffff17;
+  --violet-main-shadow: 0 12px 32px #00000030, 0 2px 8px #0000001c;
+  --violet-tab-active: rgb(224 216 244 / 0.16);
+  --violet-tab-hover: rgb(224 216 244 / 0.09);
+  --violet-tab-track: rgb(235 228 248 / 0.10);
+  --violet-tab-track-shadow: inset 0 1px 1px #ffffff0d, 0 1px 4px #00000014;
+  --violet-tab-shadow: 0 3px 10px #0000002e, 0 1px 2px #00000024;
+  --violet-float-shadow: 0 18px 48px #00000059, 0 3px 12px #00000033;
+  --violet-tooltip-bg: rgb(56 53 65 / 0.96);
+  --violet-tooltip-fg: #f5f2fa;
+  --violet-tooltip-outline: #ffffff1c;
+  --violet-tooltip-shadow: 0 6px 18px #00000052, 0 1px 3px #00000038;
+}
+
+body.theme-light.mod-linux:not(.is-mobile) {
+  --violet-shell: #e9e8ee;
+  --violet-main: #ffffff;
+  --violet-overlay: rgb(250 249 252 / 0.88);
+  --violet-line: #322f421c;
+  --violet-main-shadow: 0 12px 32px #24203917, 0 2px 8px #2420390d;
+  --violet-tab-active: rgb(255 255 255 / 0.88);
+  --violet-tab-hover: rgb(255 255 255 / 0.42);
+  --violet-tab-track: rgb(84 80 97 / 0.12);
+  --violet-tab-track-shadow: inset 0 1px 1px #ffffffa3, 0 1px 4px #322f4214;
+  --violet-tab-shadow: 0 4px 14px #3a33401f, 0 1px 3px #3a334014;
+  --violet-float-shadow: 0 18px 48px #2420392e, 0 3px 12px #2420391c;
+  --violet-tooltip-bg: rgb(253 252 255 / 0.96);
+  --violet-tooltip-fg: #2d2937;
+  --violet-tooltip-outline: #302b3e1f;
+  --violet-tooltip-shadow: 0 6px 18px #29233a24, 0 1px 3px #29233a14;
+}
+
+body.theme-light.mod-linux:not(.is-mobile) {
+  --violet-title-close-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAO1QTFRFAAAA/wAAx1BAyU1GzFBCzU5AyUxBylBFy05EzE1CzVBByU5Fy05BzE1EzU9Dyk1FzE5DzU1CyU9Cyk5Ey01Ey09Dyk1Eyk9Dyk9Dy05Cy05EzE1Dyk5Dyk5Cyk5Dy05Dy01Dy05Cy09Dyk5Dy01Dy01Dy05Cy05Dy05DzE5DzE9EzFBEzE9DzE9EzU5Ey05Dy05Dy05Dy05Dz1BFz1BE01FF01FG1FJF1VFG1VJG1VJH1lJG11NG41dL41hL6FlM6FlN6FpN6VpN7lxP8FxP8FxQ8F1Q8V1P8V1Q8l5Q9l9R9l9S+2FT/GFT/mJUOUcpSQAAADV0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7Ozx8vP0+foyAAbpAAABDElEQVQYGa3B6VaCQBgG4HfUStu00hYtwg1My0KTSgOXEFDku//L6Yx6OIIz/3weHBI7fVT1Xk9TKzkIsNuWac+DMAzmtqmXGBIyjZFHkcVvPY2Yi/aMYqZvV9hR+PQpwe/nEUl3fNqz6B5hizVmJDCuMWzcjUhoWMQaa/kk5GpYOzNJwsyCe7JIwiqDU+ck4SjgXgKSWOrgjJAkQgPcx4okVu/gWkuSCDRwzy5JOAq4ik0S9j243IAkzGNwTPdIyG1io/RNQsNrbLD6lAQmVYatVMejPYtuBpF836cEr3+JHeftMcVMXguISde+/iji/lRTSGBFbWA5QRguHWvQvIFItqxohqEpDyc4pH8FwLC3A/+dYAAAAABJRU5ErkJggg==");
+  --violet-title-close-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAARFQTFRFAAAA/wAAx1BAyU1GzFBCzU5AyUxBylBFy05EzE1CzVBByU5Fy05BzE1EzU9Dyk1FzE5DzU1CyU9Cyk5Ey01Ey09Dyk1Eyk9Dyk9Dy05Cy05EzE1Dyk5Dyk5Cyk5Dy05Dy01Dy05Cy09Dyk5Dy01Dy01Dy05Cy05Dy05DzE5DzE9EzFBEzE9DzE9EzU5Ey05Dy05Dy05Dy05Dz1BFz1BEfzEqgDIqgzMrpD820FBF0lFG01FF01FG1FJF1FJG1VFG1VJG1VJH1lJG11NG41dL41hL5llM51lM6FlM6FlN6FpN6VpN7lxP8FxP8FxQ8F1Q8V1P8V1Q8l5Q815Q9F5R9l9R9l9S+2FT/GFT/WJU/mJUEjW7vgAAADV0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7Ozx8vP0+foyAAbpAAABZElEQVQ4y62TaVuCQBDHvSrt0ko7tAwvIO1CQ0y3ywBNUzATcb//BwlmAeXw6Y3zAvaZ3/+ZnZ0jFNqghXcvKaZep6lcIhCfskgaa7qujSXEZMJeHit3VezYz2cp6uYH1SF22eDuaJWnnibYY5NGcsmjNR83rrnfcvIrD3GA9Yt2pmddcCzkKSFTeQH/j7QVgIULFi1eQOYBCXwLFApNBHvgxjLP8802xu2mceiBC8VBcCWSwAIogAu/4BKzIKDG5GpkoiZ8SEw8yoPgRrPSfjWhyZ8tx4wBAadjl8LhWOdA8Di3HcgjmD+AgJ25+IpCI++8Vv5JMif5n0lqKp2DINFZW6htUmpGXVPqitWszBtpVs9uVs9q1rHd7tIgqN1fBWcwIzU1aGBiy5FKNnwjpTYOV4dyv9r3xL9Nucc6Wnz5XmLlvRDxLU6a7ogjY3FmI7FTOQncvXg2T3Mcnb/Y2eRGh/4A4o24Z6J43oEAAAAASUVORK5CYII=");
+  --violet-title-minimize-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAPlQTFRFAAAA//8Ax58oyaInzKAkzaMjyaMmyp8ly6EkzKMkyKAjyaIiy6AjzKIiyaMmyqIkyKEjyaIjyaEjyqIly6Aly6EkyqAkyqEjyqIky6EkyaEkyqAkyqEjyqIjyqEky6EkyqIkyqEkyqEkyqEkyqEky6EkyqEkyqEjyqEkyqEkzKIky6Iky6IkzKIkyqEkyqEkyaEkyqEkzqQlzqQl0qcl0qcm06cl06gm1Kgm1Kkl1akm1aom1qsm4bMo4rQo57gp6Lgp6Lkp7r0r774r8L4q8L4r8L8q8L8r8MAr8cAr9MMs9cIs9cMr9cMs+sct+8ct+8gt/cgt/cktW1xPRwAAADR0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7PHy8/T5+r68T3IAAAERSURBVBgZrcHpVoJAGAbgd9RK27TSFi1yBXMpNGmxQEwBC1P87v9iOqMejuLMv54H/4kd3ha1TkctFlIQYJf1njX253N/bPW0HENEotp3KfT9WYljy0nDpi3D1hk2ZJ49ivC6aYTiTY92TNp7WGNVmwTsMsPK1QcJ9bNYYnWPhBwVS0cvJNFLgruzSMLMgyuOScJTwD1MSeJXA6cHJBHo4J5mJDF7BFefkoSvgrt3SGKkgCtYJGFeg0sZJGHsg2OaS0JODSu59wWJ9M+xwipDEhiUGNZiTZd2TNoJhNJdjyLc7ik2HDds2rQYtDLYEi+/flHIeSvFEMGyqmF6fhD8jEyjdgGRZF5RdV1Vbg7wn/4Aa2y4NcIq7QMAAAAASUVORK5CYII=");
+  --violet-title-minimize-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAQ5QTFRFAAAA//8Ax58oyaInzKAkzaMjyaMmyp8ly6EkzKMkyKAjyaIiy6AjzKIiyaMmyqIkyKEjyaIjyaEjyqIly6Aly6EkyqAkyqEjyqIky6EkyaEkyqAkyqEjyqIjyqEky6EkyqIkyqEkyqEkyqEkyqEky6EkyqEkyqEjyqEkyqEkzKIky6Iky6IkzKIkyqEkyqEkyaEkyqEkzqQlzqQlfmQWi24ZjG8ZjXAZ0qcl0qcm06cl06gm1Kgm1Kkl1akm1aom1qsm16sm2Kwm2a0n4bMo4rQo57gp6Lgp6Lkp7r0r774r8L4q8L4r8L8q8L8r8MAr8cAr9MMs9cIs9cMr9cMs+sct+8ct+8gt/cgt/cktJgdBjQAAADR0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7PHy8/T5+r68T3IAAAEsSURBVBgZrcHZVoJQFADQc9VKm7TSBi1yBHMoNEJpsDIQU8DCFM///0hcdbEA4c29YZvI/nWea7XYfC4BAch5tauMzfncHCtdLkPAJ1bu6ej4+ShFweOopqLHsHECLqlHA32MdhIc0bqBGybNHVgjZRUDqEUCKxfvGKiXhiVSNTCQxsLSwTOG6MaBulEwhJwFKj/GEAYD1N0UbZ9PgovYR9sfBxRvoU0UPES0WTxQDzO0iYJHB22ze6CqU7T1O4JL5wttJgvUrYYhRgxQOQVDyJdAJSQMIe0CRTgdA2kVWMm8LTBI7xRWSGmIAQYFAmuRuo4bJs0YOJJtA3309jG4HNZUdFsMGinwiBZfvtGhvRYi4EPSrCQbpmX9jmSpcgZB4lmG5XmWudqDbfoH59u+Q7zzHWUAAAAASUVORK5CYII=");
+  --violet-title-maximize-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAOpQTFRFAAAAAP8AIKcwH6ouHagzI6oyIagxIKowH6c0H6gzHqoyIqcxHqk0IqozIacyIKoxH6kzH6oyH6oyH6gyH6kxIaoxIakyIKoyIKozIKkyIKkyIKgxH6kxH6kzIKkyIKkyIKoxIakxIKkyIKkyIKkxIKkyIKgyIKkyIKkzIKgyIKoyIKoyIKoyIaoyIKkyIKkyH6kyIKkyIawzIawzIa80IbA0IbI1IrE0IrE1IrM1I7w4JLw4JME6JcE5JcI5JcI6Jcg7JsY7Jsc8Jsg7Jsg8Jsk8J8w9J809J9E+KNA/KNE+KNE/KNI/KNM/g7N2TgAAADR0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7PHy8/T5+r68T3IAAAEMSURBVBgZrcF7VwFBGAfg36CiGxVdqM11V6iWhrTrstnRavN+/6/TGZw9rJn/PA8OiZ0+lq1u1yyXMlBgt03uesFiEXgutwoMMan6QFBk/lVLYsdFa0o7Rp0rbMl9CIoRvSwiybagPfPOETZYfUoKkyrD2t2AlIZ5rLCmICXfxMpZnzR4GtKTSxpOEVLZIw1hQHoJSCOwINkhaYQ2pPc/0vh9g9QMSCMwIT37pDEzIJVc0nDuIWU4afBjSMwSpOQ3sFYYLklleI01VhuRwrjCsJFoC9oz76QQyfYExYjeJbactya0bTl+zWFHstr/poj/WUkghuVN7oggDH9mDm/cQCVdNEzbNo2HExzSPxi3resNC28KAAAAAElFTkSuQmCC");
+  --violet-title-maximize-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAPxQTFRFAAAAAP8AIKcwH6ouHagzI6oyIagxIKowH6c0H6gzHqoyIqcxHqk0IqozIacyIKoxH6kzH6oyH6oyH6gyH6kxIaoxIakyIKoyIKozIKkyIKkyIKgxH6kxH6kzIKkyIKkyIKoxIakxIKkyIKkyIKkxIKkyIKgyIKkyIKkzIKgyIKoyIKoyIKoyIaoyIKkyIKkyH6kyIKkyIawzIawzFGkfF3slG4wqG40qG48rIa80IbA0IbI1IrE0IrE1IrM1I7w4JLw4JME6JcE5JcE6JcI5JcI6Jcg7JsY7Jsc8Jsg7Jsg8Jsk8J8w9J809J9E+KNA/KNE+KNE/KNI/KNM/iZYWoAAAADR0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7PHy8/T5+r68T3IAAAFESURBVDhPrZJrV4JAEIYXtdJuWmkXLcIbmFmhabYagZdMKAzl//+XOjMsLLSfOj3fZt5ndxbOEPKPSLuXitbtqkolJ4xPW9RauKuVu7CoVpKSeaYxdvyQj9d6Op4ftN/8GJPOEZ8XHrnjiNPLR3n69lf+M6azxXKpkbgfmdfYS8/Gotz3jWJwQYsNWA/7wGAGpa2isDcKz4QGljQLwpUVpJyBHbMMgrLA8gmMZ05wZBBuXCz7nIEdVwNB9wKBM7Dj6SA8rJkQGdj5ugehxUZwRjACv/PajgRmYGeJj6xYnNAfgoEd8xyEHMVywBkI3QZB0vBXz5KG3SRIydj4IozjQJDqE1E+rYaLmRIvTIaE5HuClTskHPvteSzeTO8KJEa6NnqPcvulmiIJpKJKTcf1vM+lSZsnyRjIlmVV11X5YkcY/5Vvqi2wIYuZTtIAAAAASUVORK5CYII=");
+  --violet-title-restore-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAOpQTFRFAAAAAP8AIKcwH6ouHagzI6oyIagxIKowH6c0H6gzHqoyIqcxHqk0IqozIacyIKoxH6kzH6oyH6oyH6gyH6kxIaoxIakyIKoyIKozIKkyIKkyIKgxH6kxH6kzIKkyIKkyIKoxIakxIKkyIKkyIKkxIKkyIKgyIKkyIKkzIKgyIKoyIKoyIKoyIaoyIKkyIKkyH6kyIKkyIawzIawzIa80IbA0IbI1IrE0IrE1IrM1I7w4JLw4JME6JcE5JcI5JcI6Jcg7JsY7Jsc8Jsg7Jsg8Jsk8J8w9J809J9E+KNA/KNE+KNE/KNI/KNM/g7N2TgAAADR0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7PHy8/T5+r68T3IAAAEMSURBVBgZrcF7VwFBGAfg36CiGxVdqM11V6iWhrTrstnRavN+/6/TGZw9rJn/PA8OiZ0+lq1u1yyXMlBgt03uesFiEXgutwoMMan6QFBk/lVLYsdFa0o7Rp0rbMl9CIoRvSwiybagPfPOETZYfUoKkyrD2t2AlIZ5rLCmICXfxMpZnzR4GtKTSxpOEVLZIw1hQHoJSCOwINkhaYQ2pPc/0vh9g9QMSCMwIT37pDEzIJVc0nDuIWU4afBjSMwSpOQ3sFYYLklleI01VhuRwrjCsJFoC9oz76QQyfYExYjeJbactya0bTl+zWFHstr/poj/WUkghuVN7oggDH9mDm/cQCVdNEzbNo2HExzSPxi3resNC28KAAAAAElFTkSuQmCC");
+  --violet-title-restore-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAP9QTFRFAAAAAP8AIKcwH6ouHagzI6oyIagxIKowH6c0H6gzHqoyIqcxHqk0IqozIacyIKoxH6kzH6oyH6oyH6gyH6kxIaoxIakyIKoyIKozIKkyIKkyIKgxH6kxH6kzIKkyIKkyIKoxIakxIKkyIKkyIKkxIKkyIKgyIKkyIKkzIKgyIKoyIKoyIKoyIaoyIKkyIKkyH6kyIKkyIawzIawzFGkfGHwlGH0lG4wqG40qG48rIa80IbA0IbI1IrE0IrE1IrM1I7w4JLw4JME6JcE5JcE6JcI5JcI6Jcg7JsY7Jsc8Jsg7Jsg8Jsk8J8w9J809J9E+KNA/KNE+KNE/KNI/KNM/y+wxIwAAADR0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7PHy8/T5+r68T3IAAAFNSURBVDjLrdNrW4IwGAZgFCvtpJV20CI8gRkVmpZOQ9TMdIWB/P/fkm6wvUM/ui9w8d7s+EySdthih7eq3mhoaiG1tXxZQ8Ops1g40yHSc7FoPVHpY5+1n0FZFusn9S9faCPjDNYzr+x3L3jiZprX5Ufe/bsbDmPssflVQP8tJialcKZXfTB4iwsrG3RQwwJgYq5RcNTzRcAEShJwN4yCUNh5AtTpBggEVgh4cCBoU9FZ74ejE2C6EHy+ceGaBLysXr0O/dwWdvzvmYDaeggmIHDoOu/n5Ay6VEAwo5Ms0GUGAgL7moAU8oGAAO3TrdYxEKA+rwaHlbOWXABgnYfHXR75TPD6uMiCGWeB8bo8l0aCRyrdxJHErSJ3CkN5XJ8ImV2OnzJirOVS7xvM/6MY37g4WQ3Z2HHd35mNqhdb714yr2imqSk3B7u80dI/fgmyA2yRP3UAAAAASUVORK5CYII=");
+  --violet-title-backdrop: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAMNQTFRFAAAA////t7e3ubm5vb29uLi4uLi4urq6u7u7uLi4ubm5urq6urq6u7u7uLi4urq6uLi4ubm5urq6u7u7u7u7ubm5u7u7ubm5urq6u7u7ubm5urq6urq6u7u7urq6u7u7urq6urq6ubm5urq6urq6urq6urq6u7u7urq6urq6u7u7u7u7urq6u7u7urq6u7u7urq6urq6vLy8vLy8vb29vr6+v7+/w8PDxMTExsbGyMjIycnJysrKy8vLzMzMzc3Nzs7Oevw5HwAAADR0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers7PHy8/T5+r68T3IAAAD/SURBVBgZrcHpUsIwFAbQL4IKbqCCC2hlbRFECzaW5Bpz3/+pnADTgZL84xwck7h46SWLRdzr1uEhHiYyJ2OtoVwmbYGS6kgSF+hnWMGe66niPWp+ix3Nb+ISvWygUJlpPkDzU2yJkWIPNRDYeJTsJVtYExPNXhRj7TLjAFmD85pzwKoDp0ccoCM474YDfhM4qeUAm8L5+uMA+wlnYjjAxHDeiAN0BKebc0D+BKeecUB2BkckxF40xkZbWvaRd9gQQ8Ueqi+wdTIjPkDzKgqNpeYSWt5gx9VU8S6rPprYUxlIzQWS/ROUiFacrbSx1uhVNr6HT60TxWkaR8/nOKZ/11WTnBfxR+kAAAAASUVORK5CYII=");
+}
+
+body.theme-dark.mod-linux:not(.is-mobile) {
+  --violet-title-close-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAJxQTFRFAAAA/wAA51BI6FVN6VBJ6lVH6VFM6lBK6lNJ61JN61BL61NK6VJJ6lFI6lRL61FJ51JL6FFJ6VJM6VFL6VNK6lJJ6lNK6FJJ6VNL6VJK6VJK6VFJ6VJL6lJK6VJK6lJK6lFJ6VJK6VJJ6VJK6VJK6lJK6FJK6VFK6VJK6VJK6VJK6VJK6VJJ6VFK6VJK6VJL6VJK6VJK6VJK6VJKuVagxgAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAAMJJREFUGBmtwdt2wVAUBdC1hZbeqFsVjbidBCFi/f+/dWwxMiTOfjMnnkne5lF8Prto1oGHjBOW4pGgprlhxTpAxeeeNek37vQufJB3UQoO9EhbuJENvVaCwg8NQ1xJQoPD1TtNbag/mqZQEU0h1I6mGCqjKYM60XSESmhyUAuaQqgZTROoDk0vUBLTsEVhREMfBVnTaym4aRzokTZR6uZ8kH/hzseeNWkPFcGKFcsGamToWNoO4NOehi7LXPj7imf6BzpJeScIbYy9AAAAAElFTkSuQmCC");
+  --violet-title-close-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAMNQTFRFAAAA/wAA51BI6FVN6VBJ6lVH6VFM6lBK6lNJ61JN61BL61NK6VJJ6lFI6lRL61FJ51JL6FFJ6VJM6VFL6VNK6lJJ6lNK6FJJ6VNL6VJK6VJK6VFJ6VJL6lJK6VJK6lJK6lFJ6VJK6VJJ6VJK6VJK6lJK6FJK6VFK6VJK6VJK6VJK6VJK6VJJ6VFK6VJK6VJL6VJK6VJK6VJKdCkldikleSomlzUwv0M9wUQ9wkQ+w0Q+00pD1EtD305H4E9H6FJK6VJKzc404QAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAASJJREFUOMutk9lWwjAQhoGighuLgApaKkuKshRMi8QWO+//VNqZNG3acLzhv+iZ5P9OOpmZVCpnVPX6xXG3W+aMmkZ7sAAlt18t+vUZaJpaun/3AQWtOnm//Qkl7VqZby3BoNWFym8GRk3STB9pHYdHCo5hTEFPHkD3i/c8EEkgAr4nghFwQ3jIOfcPAAf/L4hor4HAqzw4QAL94If2hgg4MieRWD5+hNyyEXhPs/5OzMT/UiVHwAOdyHzwENiotSgCawQWup8n6J7j/5IcGa4pa/qEQPN0oS6p1O6pUs9ls/qyWVHarEg2q5u2e2pu95sazJp5YOrZSLV2hpG7zw/lbXlo2/pYW5PC/2ulh9NjmT1/ML69xtBmnsfs56tzvGSlX9OIj75dvI+EAAAAAElFTkSuQmCC");
+  --violet-title-minimize-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAJxQTFRFAAAA//8A768Y8LIX8K8d8bEc764b768b76wa8K0a8K8Z8Kwd8q0a8q4a8rAZ864c760b8K4b8q0c764c8K8c8K0b8K8b8K0a8a4a8a8a8a0c8a4c8a8b8a0b8q4b8q4b8q4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4c8a4b8a4b8a0b8a4b8a4b8a4b0NRsKQAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAAMJJREFUGBmtwdt2wVAUBdC1hZbeqFsVjbidBCFi/f+/dWwxMiTOfjMnnkne5lF8Prto1oGHjBOW4pGgprlhxTpAxeeeNek37vQufJB3UQoO9EhbuJENvVaCwg8NQ1xJQoPD1TtNbag/mqZQEU0h1I6mGCqjKYM60XSESmhyUAuaQqgZTROoDk0vUBLTsEVhREMfBVnTaym4aRzokTZR6uZ8kH/hzseeNWkPFcGKFcsGamToWNoO4NOehi7LXPj7imf6BzpJeScIbYy9AAAAAElFTkSuQmCC");
+  --violet-title-minimize-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALFQTFRFAAAA//8A768Y8LIX8K8d8bEc764b768b76wa8K0a8K8Z8Kwd8q0a8q4a8rAZ864c760b8K4b8q0c764c8K8c8K0b8K8b8K0a8a4a8a8a8a0c8a4c8a8b8a0b8q4b8q4b8q4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4b8a4c8a4b8a4b8a0b8a4b8a4beFcNhGAPhWAPhmEPzZQXzpUXz5UX8a4bmH4nJwAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAANtJREFUGBmtwetWgkAYBdAzYqXdtNJKLcLbQIoiIWTn/R+s9YmLxeDMP/fGJanbjyDc7XQw6cJCvUashEOFhvaChrkHw8OKDfETavo/PJP2UPHWtIivcKIWtJoplN7oMMCRiuigcXRHpw7EJ53GEAGdfIhvit99VpMfKEKIhCLPDDlFArGlyDNDQbGBiCgORVZT/FFoiC86+RATOr1DdOl0DaFCOixRGtLhGSU1p9VU4aS1pkXcRqWX8kz6iJr7FRviPgzejIZpCw1qoFlZvsCmM/Z1kmh/dINL+gdIaIbB3UMoVQAAAABJRU5ErkJggg==");
+  --violet-title-maximize-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAJxQTFRFAAAAAP8AWMc4Xck2V8U6XMY5V8k2Wso1WMY5V8c4Wsg3WMk2W8c4Wcg3WMk2WcY5Wsg3Wck2WMk2Wsc4Wcg3WMg3Wcc4WMc4Wcg3WMk2Wsc4Wcg3WMg3Wsg3Wcg3Wcg3Wcg3WMg3Wcg3WMg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wck2Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3DrjiAAAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAAMJJREFUGBmtwdt2wVAUBdC1hZbeqFsVjbidBCFi/f+/dWwxMiTOfjMnnkne5lF8Prto1oGHjBOW4pGgprlhxTpAxeeeNek37vQufJB3UQoO9EhbuJENvVaCwg8NQ1xJQoPD1TtNbag/mqZQEU0h1I6mGCqjKYM60XSESmhyUAuaQqgZTROoDk0vUBLTsEVhREMfBVnTaym4aRzokTZR6uZ8kH/hzseeNWkPFcGKFcsGamToWNoO4NOehi7LXPj7imf6BzpJeScIbYy9AAAAAElFTkSuQmCC");
+  --violet-title-maximize-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALFQTFRFAAAAAP8AWMc4Xck2V8U6XMY5V8k2Wso1WMY5V8c4Wsg3WMk2W8c4Wcg3WMk2WcY5Wsg3Wck2WMk2Wsc4Wcg3WMg3Wcc4WMc4Wcg3WMk2Wsc4Wcg3WMg3Wsg3Wcg3Wcg3Wcg3WMg3Wcg3WMg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wck2Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3LGQbNHUgO4UkPIYlPIglUbcyWMY3Wcg3yG4cJwAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAAPtJREFUOMutk9cagjAMhVXce28RFYsbEWff/8H8DGkbaL3j3CXnhyZNmsmkqGx17njXK3NmFaM93HEpb5BN+nmXx7Sx4n7jwBM6dajfvnFNQUv51pEbdCrI+lxu1FpUOuJ/1McfyP4+zxB0f0cxi4Ca+kQSGJcBWAiXEJiaAuBg9ADiRQEbgD1GISHElQPgC4AQmPIBuEhAEZg6A7BTgCQ47XNJAEHEipxRIHx+sOOfxgBUMLoTAlWMrtqLordGbHFYg3/D6opxb8z+Si5mzrwwebVSrUD3gyZdyrq+tO34WlvrxPk57eH0mbK3PePbK09t5vvMnpTSeMlSX+aLhhX++8yeAAAAAElFTkSuQmCC");
+  --violet-title-restore-normal: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAJxQTFRFAAAAAP8AWMc4Xck2V8U6XMY5V8k2Wso1WMY5V8c4Wsg3WMk2W8c4Wcg3WMk2WcY5Wsg3Wck2WMk2Wsc4Wcg3WMg3Wcc4WMc4Wcg3WMk2Wsc4Wcg3WMg3Wsg3Wcg3Wcg3Wcg3WMg3Wcg3WMg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wck2Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3DrjiAAAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAAMJJREFUGBmtwdt2wVAUBdC1hZbeqFsVjbidBCFi/f+/dWwxMiTOfjMnnkne5lF8Prto1oGHjBOW4pGgprlhxTpAxeeeNek37vQufJB3UQoO9EhbuJENvVaCwg8NQ1xJQoPD1TtNbag/mqZQEU0h1I6mGCqjKYM60XSESmhyUAuaQqgZTROoDk0vUBLTsEVhREMfBVnTaym4aRzokTZR6uZ8kH/hzseeNWkPFcGKFcsGamToWNoO4NOehi7LXPj7imf6BzpJeScIbYy9AAAAAElFTkSuQmCC");
+  --violet-title-restore-hover: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALpQTFRFAAAAAP8AWMc4Xck2V8U6XMY5V8k2Wso1WMY5V8c4Wsg3WMk2W8c4Wcg3WMk2WcY5Wsg3Wck2WMk2Wsc4Wcg3WMg3Wcc4WMc4Wcg3WMk2Wsc4Wcg3WMg3Wsg3Wcg3Wcg3Wcg3WMg3Wcg3WMg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wck2Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3Wcg3LGQbNHYgNXYhO4UkO4UlPIglUbcyUrgyWMY2WMY3Wcg3TusYsgAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAAP9JREFUOMut09cWgjAMBmAV98S9EUWLG3Gvvv9reUwhTcBLc8Xh/6ArTST+WMniyHYPB2EPCz/jzlJiue1kNE/PJSvH4HllLSO1rdPcPGLwDh/8ms6Njf7y+sJ/ZHB+dPyTFrNwpl069omIVvCDJQdaCAVKMgK0yAMYxwCKAQA7DkJhAVgxcFbiBvvhAvAYeFyI8ADsv/t3U6/PT6Z3AGCVKBhQ65yoM7grwYCa5FBSwUAPQEFSwUBWbbVLBc0XwWG1JREUNMLjdogg+RQbM7XRQufbtG6pmo8Cc79Km7Icb1qTt7Ux4/k0Fbs4LUHW1/x59/IDS3iesPq5f9xkrA87H4uapBEckQAAAABJRU5ErkJggg==");
+  --violet-title-backdrop: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAJxQTFRFAAAAAAAAYGBgXV1dX19fXFxcXFxcYGBgXl5eXFxcX19fXV1dX19fXl5eXFxcXV1dXl5eXV1dXl5eXV1dXFxcXl5eXFxcXl5eXV1dXFxcXl5eXV1dXFxcXV1dXV1dXV1dXV1dXFxcXV1dXl5eXV1dXV1dXV1dXV1dXV1dXl5eXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1doNfjyQAAADN0Uk5TAAEgISMkLzAxMjM0Ozw9P0FCUVJTVFZXfn+AgYKDvb6/xMbHydbX2Nna6ers8fLz9Pn60YknLAAAAMJJREFUGBmtwdt2wVAUBdC1hZbeqFsVjbidBCFi/f+/dWwxMiTOfjMnnkne5lF8Prto1oGHjBOW4pGgprlhxTpAxeeeNek37vQufJB3UQoO9EhbuJENvVaCwg8NQ1xJQoPD1TtNbag/mqZQEU0h1I6mGCqjKYM60XSESmhyUAuaQqgZTROoDk0vUBLTsEVhREMfBVnTaym4aRzokTZR6uZ8kH/hzseeNWkPFcGKFcsGamToWNoO4NOehi7LXPj7imf6BzpJeScIbYy9AAAAAElFTkSuQmCC");
+}
+
+body.mod-linux:not(.is-mobile) .titlebar {
+  right: auto;
+  width: var(--violet-controls-width);
+  height: var(--violet-topbar-height);
+  background-color: transparent;
+  border: 0;
+  pointer-events: none;
+}
+body.mod-linux:not(.is-mobile) .titlebar-inner {
+  width: var(--violet-controls-width);
+  height: var(--violet-topbar-height);
+}
+body.mod-linux:not(.is-mobile) .titlebar-button-container.mod-left {
+  display: none;
+}
+body.mod-linux:not(.is-mobile) .titlebar-button-container.mod-right {
+  inset: 8px auto auto 14px;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: 32px;
+  direction: ltr;
+  background-color: transparent;
+  pointer-events: auto;
+}
+body.mod-linux:not(.is-mobile).is-hidden-frameless:not(.is-fullscreen) .titlebar-button-container.mod-right {
+  background-color: transparent;
+}
+body.mod-linux:not(.is-mobile) .titlebar-button-container.mod-right .titlebar-button {
+  box-sizing: border-box;
+  flex: 0 0 22px;
+  width: 22px;
+  min-width: 22px;
+  height: 32px;
+  padding: 0 3px;
+  border: 0;
+  background-color: transparent;
+  background-image: var(--violet-button-normal);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  box-shadow: none;
+  pointer-events: auto;
+  -webkit-app-region: no-drag;
+}
+body.mod-linux:not(.is-mobile) .titlebar-button-container.mod-right .titlebar-button svg {
+  opacity: 0;
+}
+body.mod-linux:not(.is-mobile) .titlebar-button.mod-close {
+  order: 0;
+  --violet-button-normal: var(--violet-title-close-normal);
+  --violet-button-hover: var(--violet-title-close-hover);
+}
+body.mod-linux:not(.is-mobile) .titlebar-button.mod-minimize {
+  order: 1;
+  --violet-button-normal: var(--violet-title-minimize-normal);
+  --violet-button-hover: var(--violet-title-minimize-hover);
+}
+body.mod-linux:not(.is-mobile) .titlebar-button.mod-maximize,
+body.mod-linux:not(.is-mobile) .titlebar-button.mod-restore {
+  order: 2;
+  --violet-button-normal: var(--violet-title-maximize-normal);
+  --violet-button-hover: var(--violet-title-maximize-hover);
+}
+body.mod-linux:not(.is-mobile) .titlebar-button.mod-restore,
+body.mod-linux:not(.is-mobile) .titlebar-button.mod-maximize[aria-label^=Restore] {
+  --violet-button-normal: var(--violet-title-restore-normal);
+  --violet-button-hover: var(--violet-title-restore-hover);
+}
+body.mod-linux:not(.is-mobile) .titlebar-button-container.mod-right .titlebar-button:hover {
+  background-image: var(--violet-button-hover);
+}
+body.mod-linux:not(.is-mobile) .titlebar-button-container.mod-right .titlebar-button:focus-visible {
+  outline: 2px solid var(--violet-accent-line);
+  outline-offset: -3px;
+  border-radius: var(--violet-control-radius);
+}
+body.mod-linux:not(.is-mobile).is-popout-modal .titlebar {
+  height: 30px;
+}
+body.mod-linux:not(.is-mobile).is-popout-modal .titlebar-inner {
+  height: 30px;
+}
+body.mod-linux:not(.is-mobile).is-popout-modal .titlebar-text {
+  display: none;
+}
+body.mod-linux:not(.is-mobile).is-popout-modal .titlebar-button-container.mod-right {
+  top: 0;
+  height: 30px;
+}
+body.mod-linux:not(.is-mobile).is-popout-modal .titlebar-button-container.mod-right .titlebar-button {
+  height: 30px;
+}
+body.mod-linux:not(.is-mobile).is-popout-modal.is-frameless.is-hidden-frameless:not(.is-fullscreen) .titlebar {
+  padding: 0;
+}
+
+body.mod-linux:not(.is-mobile) .app-container {
+  background-color: var(--violet-shell);
+}
+body.mod-linux:not(.is-mobile) .horizontal-main-container,
+body.mod-linux:not(.is-mobile) .workspace {
+  background-color: transparent;
+}
+body.mod-linux:not(.is-mobile) .workspace {
+  gap: var(--violet-gap);
+  padding: 0 var(--violet-gap) var(--violet-gap);
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root {
+  height: 100%;
+  transition: height 220ms cubic-bezier(0.2, 0.7, 0.2, 1) 90ms;
+}
+body.mod-linux:not(.is-mobile):has(.status-bar:is(:hover, :focus-within)) .workspace-split.mod-root {
+  height: calc(100% - var(--violet-status-clearance));
+  transition-delay: 0ms;
+}
+body.mod-linux:not(.is-mobile) .status-bar {
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 90ms ease;
+}
+body.mod-linux:not(.is-mobile):has(.status-bar:is(:hover, :focus-within)) .status-bar {
+  opacity: 1;
+  transition-delay: 150ms;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock {
+  min-width: 0;
+  overflow: visible;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .workspace-tabs {
+  overflow: visible;
+  background-color: transparent;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-container,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .workspace-tab-header-container {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  width: 100%;
+  height: var(--violet-topbar-height);
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-left-split .workspace-tab-header-container {
+  width: calc(100% - var(--violet-controls-width) + 28px);
+  margin-left: calc(var(--violet-controls-width) - 28px);
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top > .workspace-tab-header-container {
+  box-sizing: border-box;
+  padding-inline: var(--violet-tab-controls-space);
+  -webkit-app-region: no-drag;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top > .workspace-tab-header-container > .workspace-tab-header-container-inner {
+  position: relative;
+  top: auto;
+  right: auto;
+  left: auto;
+  height: 38px;
+  box-sizing: border-box;
+  margin: 5px auto;
+  padding: 3px 5px;
+  justify-content: center;
+  gap: 0;
+  border-radius: 999px;
+  background-color: var(--violet-tab-track);
+  box-shadow: var(--violet-tab-track-shadow);
+  -webkit-app-region: no-drag;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-new-tab,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-tab-list,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .sidebar-toggle-button.mod-right {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  margin: 0;
+  pointer-events: auto;
+  -webkit-app-region: no-drag;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-new-tab {
+  right: 74px;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tab-header-tab-list {
+  right: 42px;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .sidebar-toggle-button.mod-right {
+  right: 8px;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top > .workspace-tab-header-container > .workspace-tab-header-spacer {
+  display: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tab-container {
+  min-height: 0;
+  overflow: hidden;
+  background-color: var(--violet-main);
+  border: 1px solid var(--violet-line);
+  border-radius: var(--violet-main-radius);
+  box-shadow: var(--violet-main-shadow);
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root:has(> .workspace-split) {
+  isolation: isolate;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root:has(> .workspace-split)::before {
+  position: absolute;
+  z-index: -1;
+  inset: var(--violet-topbar-height) 0 0;
+  content: "";
+  pointer-events: none;
+  background-color: var(--violet-main);
+  border: 1px solid var(--violet-line);
+  border-radius: var(--violet-main-radius);
+  box-shadow: var(--violet-main-shadow);
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root:has(> .workspace-split) .workspace-split,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root:has(> .workspace-split) .workspace-tab-container,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root:has(> .workspace-split) .workspace-leaf,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root:has(> .workspace-split) .view-header,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root:has(> .workspace-split) .view-content {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs:not(.mod-top) > .workspace-tab-header-container {
+  position: relative;
+  top: auto;
+  left: 0;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-leaf,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .view-header {
+  background-color: var(--violet-main);
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content[data-type=markdown] .view-header-title-container {
+  display: flex;
+  min-width: 0;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content[data-type=markdown] .view-header-title-container > div {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content[data-type=markdown] .view-header:is(:hover, :focus-within) .view-header-title-container > div {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .workspace-tab-container,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .workspace-leaf,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .view-header,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .view-content,
+body.mod-linux:not(.is-mobile) .workspace-ribbon,
+body.mod-linux:not(.is-mobile) .status-bar {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-ribbon,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .view-header,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock .workspace-tab-header-container,
+body.mod-linux:not(.is-mobile) .workspace-sidedock-vault-profile {
+  border-color: transparent;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock > .workspace-leaf-resize-handle {
+  width: calc(var(--violet-gap) + 3px);
+  overflow: visible;
+  border: 0;
+  background-color: transparent;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-left-split > .workspace-leaf-resize-handle {
+  right: calc(-1 * var(--violet-gap));
+  left: auto;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+  right: auto;
+  left: calc(-1 * var(--violet-gap));
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock > .workspace-leaf-resize-handle::after {
+  position: absolute;
+  top: calc(var(--violet-topbar-height) + 8px);
+  bottom: 8px;
+  left: 50%;
+  width: 2px;
+  content: "";
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background-color: var(--violet-resize-line);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock > .workspace-leaf-resize-handle:is(:hover, :active)::after {
+  opacity: 1;
+}
+body.mod-linux:not(.is-mobile) .workspace-ribbon .sidebar-toggle-button.mod-left {
+  left: var(--violet-controls-width);
+  top: 4px;
+}
+body.mod-linux:not(.is-mobile) .workspace-ribbon {
+  margin-top: 0;
+  padding-top: calc(8px + var(--violet-topbar-height));
+}
+body.mod-linux:not(.is-mobile) .workspace-ribbon::before {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.mod-linux:not(.is-mobile) .workspace-split.mod-root,
+  body.mod-linux:not(.is-mobile) .status-bar {
+    transition: none;
+  }
+  body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-leaf-content[data-type=markdown] .view-header-title-container > div {
+    transition: none;
+  }
+}
+@keyframes violet-side-leaf-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px) scale(0.975);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf:not([style*="display: none"]) {
+  transform-origin: top center;
+  animation: violet-side-leaf-in 220ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+body.mod-linux:not(.is-mobile) .mod-left-split .workspace-leaf-content[data-type=search] .search-results-info {
+  margin-bottom: 2px;
+  padding: 2px 16px 8px;
+  border-bottom: 0;
+}
+body.mod-linux:not(.is-mobile) .mod-left-split .workspace-leaf-content[data-type=search] .search-result-container {
+  padding-top: 8px;
+}
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-container {
+  --metadata-divider-width: 0px;
+}
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-properties {
+  gap: 6px;
+}
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-property-key,
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-property-value {
+  border-bottom: 0;
+}
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-property-key-input,
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-property-value {
+  border-radius: 5px;
+}
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-property-value[data-property-type=date] > input.mod-date {
+  border-radius: 5px;
+}
+body.mod-linux:not(.is-mobile) .mod-right-split .workspace-leaf-content[data-type=file-properties] .metadata-add-button {
+  margin-top: 10px;
+}
+body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is([data-type=file-explorer],
+[data-type=tag],
+[data-type=all-properties],
+[data-type=outline]) > .nav-header > .nav-buttons-container {
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is([data-type=file-explorer],
+[data-type=tag],
+[data-type=all-properties],
+[data-type=outline]) > .nav-header > .nav-buttons-container > .nav-action-button {
+  box-sizing: border-box;
+  flex: 0 0 4px;
+  width: 4px;
+  min-width: 4px;
+  height: 4px;
+  min-height: 4px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: var(--violet-side-dot);
+  box-shadow: none;
+  pointer-events: none;
+  transition: flex-basis 160ms ease, width 160ms ease, min-width 160ms ease, height 160ms ease, min-height 160ms ease, background-color 160ms ease;
+}
+body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is([data-type=file-explorer],
+[data-type=tag],
+[data-type=all-properties],
+[data-type=outline]) > .nav-header > .nav-buttons-container > .nav-action-button > svg {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is([data-type=file-explorer],
+[data-type=tag],
+[data-type=all-properties],
+[data-type=outline]) > .nav-header:is(:hover, :focus-within, :has(.has-active-menu)) > .nav-buttons-container > .nav-action-button {
+  flex-basis: 30px;
+  width: 30px;
+  min-width: 30px;
+  height: 26px;
+  min-height: 26px;
+  padding: 3px;
+  overflow: visible;
+  border-radius: var(--violet-control-radius);
+  background-color: transparent;
+  pointer-events: auto;
+}
+body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf-content:is([data-type=file-explorer],
+[data-type=tag],
+[data-type=all-properties],
+[data-type=outline]) > .nav-header:is(:hover, :focus-within, :has(.has-active-menu)) > .nav-buttons-container > .nav-action-button > svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf:not([style*="display: none"]) {
+    animation: none;
+  }
+  body.mod-linux:not(.is-mobile) .workspace-split.mod-sidedock > .workspace-leaf-resize-handle::after {
+    transition: none;
+  }
+  body.mod-linux:not(.is-mobile) .mod-sidedock .workspace-leaf-content > .nav-header > .nav-buttons-container > .nav-action-button {
+    transition: none;
+  }
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header.mod-active {
+  background-color: var(--violet-tab-active);
+  border-radius: 999px;
+  box-shadow: var(--violet-tab-shadow);
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header {
+  height: 32px;
+  border-radius: 999px;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header:not(.mod-active):hover {
+  background-color: var(--violet-tab-hover);
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header-inner-title {
+  text-align: center;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header-inner {
+  background-color: transparent;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header-inner-close-button {
+  display: flex;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header-inner::after {
+  display: none;
+}
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header::before,
+body.mod-linux:not(.is-mobile) .workspace-split.mod-root .workspace-tabs.mod-top .workspace-tab-header::after {
+  display: none;
+}
+body.mod-linux:not(.is-mobile) .nav-file-title.is-active {
+  background-color: var(--violet-accent-soft);
+  box-shadow: none;
+  border-radius: var(--violet-control-radius);
+}
+body.mod-linux:not(.is-mobile) .nav-file-title:not(.is-active):hover,
+body.mod-linux:not(.is-mobile) .nav-folder-title:hover,
+body.mod-linux:not(.is-mobile) .workspace-ribbon .clickable-icon:hover,
+body.mod-linux:not(.is-mobile) .view-header .clickable-icon:hover {
+  background-color: var(--violet-accent-soft);
+  border-radius: var(--violet-control-radius);
+}
+body.mod-linux:not(.is-mobile) .workspace-ribbon .clickable-icon,
+body.mod-linux:not(.is-mobile) .view-header .clickable-icon {
+  transition: background-color 140ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.mod-linux:not(.is-mobile) .workspace-ribbon .clickable-icon,
+  body.mod-linux:not(.is-mobile) .view-header .clickable-icon {
+    transition: none;
+  }
+}
+@keyframes violet-tooltip-reveal {
+  from {
+    clip-path: inset(100% 50% 0 50% round 8px);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 8px);
+    opacity: 1;
+  }
+}
+body.mod-linux:not(.is-mobile) .prompt,
+body.mod-linux:not(.is-mobile) .menu,
+body.mod-linux:not(.is-mobile) .suggestion-container,
+body.mod-linux:not(.is-mobile) .popover,
+body.mod-linux:not(.is-mobile) .modal {
+  border: 1px solid var(--violet-line);
+  border-radius: var(--violet-float-radius);
+  box-shadow: var(--violet-float-shadow);
+}
+body.mod-linux:not(.is-mobile) .prompt,
+body.mod-linux:not(.is-mobile) .menu,
+body.mod-linux:not(.is-mobile) .suggestion-container {
+  background-color: var(--violet-overlay);
+  backdrop-filter: blur(18px) saturate(1.08);
+}
+body.mod-linux:not(.is-mobile) .tooltip {
+  border-radius: 8px;
+  color: var(--violet-tooltip-fg);
+  background-color: var(--violet-tooltip-bg);
+  box-shadow: inset 0 0 0 1px var(--violet-tooltip-outline), var(--violet-tooltip-shadow);
+  backdrop-filter: blur(12px) saturate(1.08);
+  animation: violet-tooltip-reveal 200ms cubic-bezier(0.34, 0.8, 0.34, 1) both;
+}
+body.mod-linux:not(.is-mobile) .tooltip .tooltip-arrow {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.mod-linux:not(.is-mobile) .tooltip {
+    animation: none;
+  }
+}
