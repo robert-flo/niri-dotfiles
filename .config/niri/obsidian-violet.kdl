@@ -1,0 +1,23 @@
+// Violet: native Wayland Obsidian on the tested modified niri 26.04 build.
+// This rule blurs only pixels that the Electron window actually exposes as alpha.
+window-rule {
+    match app-id=r#"^md\.obsidian\.Obsidian$"#
+
+    opacity 1.0
+    draw-border-with-background false
+    geometry-corner-radius 18
+    clip-to-geometry true
+
+    background-effect {
+        blur true
+        xray false
+    }
+
+    popups {
+        geometry-corner-radius 14
+        background-effect {
+            blur true
+            xray false
+        }
+    }
+}

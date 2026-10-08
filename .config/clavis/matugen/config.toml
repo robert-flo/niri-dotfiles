@@ -1,0 +1,35 @@
+# fcitx5-matugen-theme (StatIndet) registrado en Clavis.
+# Formato limitado de Clavis: solo input_path, output_path y post_hook (sin "index" ni [config]).
+# El orden importa: fcitx5_arrow va al final porque su post_hook recarga Fcitx5.
+
+[templates.fcitx5_theme]
+input_path = "/home/niri/.local/share/fcitx5-matugen-theme/templates/theme.conf"
+output_path = "~/.local/share/fcitx5/themes/Matugen/theme.conf"
+
+[templates.fcitx5_panel]
+input_path = "/home/niri/.local/share/fcitx5-matugen-theme/templates/panel.svg"
+output_path = "~/.local/share/fcitx5/themes/Matugen/panel.svg"
+post_hook = "bash \"/home/niri/.local/share/fcitx5-matugen-theme/scripts/render-panel.sh\" \"$HOME/.local/share/fcitx5/themes/Matugen/panel.svg\" \"$HOME/.local/share/fcitx5/themes/Matugen/panel.png\""
+
+[templates.fcitx5_highlight]
+input_path = "/home/niri/.local/share/fcitx5-matugen-theme/templates/highlight.svg"
+output_path = "~/.local/share/fcitx5/themes/Matugen/highlight.svg"
+
+[templates.fcitx5_radio]
+input_path = "/home/niri/.local/share/fcitx5-matugen-theme/templates/radio.svg"
+output_path = "~/.local/share/fcitx5/themes/Matugen/radio.svg"
+
+[templates.fcitx5_arrow]
+input_path = "/home/niri/.local/share/fcitx5-matugen-theme/templates/arrow.svg"
+output_path = "~/.local/share/fcitx5/themes/Matugen/arrow.svg"
+post_hook = "busctl --user call org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1 ReloadAddonConfig s classicui"
+
+# clavis-fish-theme (StatIndet): paleta del prompt de Fish
+[templates.clavis_fish]
+input_path = "/home/niri/.local/share/clavis-fish-theme/matugen.conf"
+output_path = "~/.config/clavis-fish-theme/colors.conf"
+
+# Anillo de foco en degradado de niri (dotfiles de StatIndet)
+[templates.niri_focus_ring]
+input_path = "/home/niri/.local/share/statindet-niri/niri-colors.kdl"
+output_path = "~/.config/niri/statindet-colors.kdl"

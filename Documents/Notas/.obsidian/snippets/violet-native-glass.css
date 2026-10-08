@@ -1,0 +1,20 @@
+/* Enable only after Obsidian's native Electron window is confirmed transparent.
+   Copy into the test vault's .obsidian/snippets/ and enable as a CSS snippet.
+   This is static CSS, not a plugin or Style Settings integration. */
+body.theme-dark.mod-linux:not(.is-mobile) {
+  --violet-shell: rgb(44 42 51 / 0.82);
+}
+
+body.theme-light.mod-linux:not(.is-mobile) {
+  --violet-shell: rgb(235 234 241 / 0.84);
+}
+
+body.mod-linux:not(.is-mobile),
+body.mod-linux:not(.is-mobile) .horizontal-main-container,
+body.mod-linux:not(.is-mobile) .workspace {
+  background-color: transparent;
+}
+
+body.mod-linux:not(.is-mobile) .app-container {
+  background-color: var(--violet-shell);
+}
