@@ -1,4 +1,5 @@
 // Managed by Clavis.
 cursor {
-    xcursor-size 24;
+    xcursor-theme "MacTahoe-cursors";
+    xcursor-size 128;
 };
