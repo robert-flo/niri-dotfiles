@@ -19,7 +19,7 @@ Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare):
 | `.config/gtk-3.0/`, `.config/gtk-4.0/` | tema GTK MacTahoe-Dark (incluido libadwaita) y botones de ventana a la izquierda |
 | `.config/environment.d/` | `QT_QPA_PLATFORMTHEME=gtk3` |
 | `.config/fcitx5/conf/classicui.conf` | fcitx5 con el tema Matugen |
-| `.config/fish/`, `.config/alacritty/` | fish como shell de Alacritty con prompt de colores Matugen |
+| `.config/fish/`, `.config/alacritty/`, `.bashrc` | fish como shell de Alacritty con prompt de colores Matugen; bash carga el entorno Omarchy y, si existe, `CURSOR_API_KEY` |
 | `.config/thunderbird/` | perfil con tema CSS (`chrome/`) y `user.js` (solo tema, sin datos de correo) |
 | `.config/obsidian/`, `Documents/Notas/.obsidian/` | tema Violet de Obsidian (solo apariencia, sin notas) |
 | `.local/share/clavis/wallpapers/` | dos wallpapers |
@@ -63,6 +63,7 @@ Si se ejecuta fuera de una sesión gráfica, avisa de lo que no pudo aplicar; ba
 
 - `~/.config/niri/clavis/*.kdl` los gestiona Clavis desde su configuración; no editarlos a mano.
 - El perfil de Thunderbird debe coincidir con `[Install…] Default=` de `~/.config/thunderbird/installs.ini`.
+- Para el CLI/SDK de Cursor, guarda la key en `~/.config/cursor/api-key` con `chmod 600`. Fish y bash la cargan en `CURSOR_API_KEY` solo si el archivo existe; `.config/cursor/` está en `.gitignore`.
 
 ## Créditos y atribución
 
