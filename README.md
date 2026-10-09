@@ -14,7 +14,7 @@ Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare):
 
 | Ruta | Contenido |
 |---|---|
-| `.config/niri/` | `config.kdl`, fragmentos gestionados por Clavis (`clavis/*.kdl`), cursor, animaciones spring, focus ring con degradado, reglas de blur para Obsidian y Thunderbird |
+| `.config/niri/` | `config.kdl`, fragmentos gestionados por Clavis (`clavis/*.kdl`, incluido el cursor), animaciones spring, focus ring con degradado, reglas de blur para Obsidian y Thunderbird |
 | `.config/clavis/` | `config.json` de Clavis y registro de plantillas Matugen propias (`matugen/config.toml`) |
 | `.local/share/statindet-niri/`, `.local/share/fcitx5-matugen-theme/`, `.local/share/clavis-fish-theme/` | plantillas Matugen: focus ring de niri, tema de fcitx5 y prompt de fish |
 | `.config/mpv/` | mpv con interfaz uosc personalizada (`hwdec=vaapi`) |
@@ -25,7 +25,7 @@ Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare):
 | `.config/thunderbird/` | perfil con tema CSS (`chrome/`) y `user.js` (solo tema, sin datos de correo) |
 | `.config/obsidian/`, `Documents/Notas/.obsidian/` | tema Violet de Obsidian (solo apariencia, sin notas) |
 | `.local/share/clavis/wallpapers/` | dos wallpapers |
-| `.icons/default/index.theme` | cursor MacTahoe por defecto para apps que no reciben `XCURSOR_THEME` |
+| `.icons/default/index.theme` | hereda `MacTahoe-dark-cursors` como cursor por defecto para apps que no reciben `XCURSOR_THEME` (no lo genera el post-install) |
 | `.local/bin/niri-dotfiles-postinstall` | pasos posteriores a la instalación (ver abajo) |
 
 ## Requisitos
@@ -63,7 +63,7 @@ Si se ejecuta fuera de una sesión gráfica, avisa de lo que no pudo aplicar; ba
 
 ## Notas
 
-- `~/.config/niri/clavis/*.kdl` los gestiona Clavis desde su configuración; no editarlos a mano.
+- `~/.config/niri/clavis/*.kdl` los gestiona Clavis desde su configuración; no editarlos a mano. El cursor de niri es `clavis/cursor.kdl` (el tema y el tamaño elegidos en los ajustes de Clavis); no hay un `cursor-theme.kdl` que lo pise.
 - El perfil de Thunderbird debe coincidir con `[Install…] Default=` de `~/.config/thunderbird/installs.ini`.
 - Para el CLI/SDK de Cursor, guarda la key en `~/.config/cursor/api-key` con `chmod 600`. Fish y bash la cargan en `CURSOR_API_KEY` solo si el archivo existe; `.config/cursor/` está en `.gitignore`.
 

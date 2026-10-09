@@ -649,8 +649,6 @@ include "clavis/minimize-animation.kdl";
 
 include "clavis/hot-corners.kdl";
 
-include "cursor-theme.kdl";
-
 include "obsidian-violet.kdl";
 
 include "liquidbird.kdl";
