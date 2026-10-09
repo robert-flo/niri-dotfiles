@@ -53,10 +53,10 @@ Después, una vez:
 El script es idempotente y hace lo que no puede vivir en archivos versionados:
 
 - adapta a tu `$HOME` las rutas absolutas de `~/.config/clavis/config.json` (wallpaper) y `~/.config/obsidian/obsidian.json` (vault);
-- aplica `gsettings`: tema GTK, iconos, cursor, modo oscuro y botones a la izquierda;
+- aplica `gsettings`: tema GTK, iconos, botones a la izquierda, y el modo claro/oscuro y el cursor leídos de la configuración de Clavis (`theme.mode` en `config.json` y `clavis/cursor.kdl`);
 - habilita los servicios de usuario `clavis-shell.service` y `clavis-clipboard.service` (son los que arrancan la barra y el portapapeles; `config.kdl` no los lanza para no duplicar la barra);
 - crea `~/Pictures/mpv` (capturas de mpv);
-- genera los colores Matugen desde el wallpaper (focus ring de niri, fcitx5 y fish);
+- genera los colores Matugen desde el wallpaper y el modo claro/oscuro de Clavis (focus ring de niri, fcitx5 y fish);
 - valida la configuración de niri.
 
 Si se ejecuta fuera de una sesión gráfica, avisa de lo que no pudo aplicar; basta con volver a ejecutarlo dentro de la sesión. Al cambiar el wallpaper desde Clavis, los colores se regeneran solos.
