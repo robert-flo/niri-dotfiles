@@ -22,13 +22,37 @@ for f in "$HOME/.config/clavis/config.json" "$HOME/.config/obsidian/obsidian.jso
     fi
 done
 
+cfg="$HOME/.config/clavis/config.json"
+theme_mode=dark
+if [[ -f "$cfg" ]] && command -v jq >/dev/null; then
+    theme_mode=$(jq -r '.theme.mode // "dark"' "$cfg")
+fi
+if [[ "$theme_mode" == light ]]; then
+    color_scheme=prefer-light
+else
+    theme_mode=dark
+    color_scheme=prefer-dark
+fi
+
+cursor_kdl="$HOME/.config/niri/clavis/cursor.kdl"
+cursor_theme=MacTahoe-dark-cursors
+cursor_size=24
+if [[ -f "$cursor_kdl" ]]; then
+    parsed_theme=$(sed -n 's/^[[:space:]]*xcursor-theme[[:space:]]*"\([^"]*\)".*/\1/p' "$cursor_kdl" | head -n1)
+    parsed_size=$(sed -n 's/^[[:space:]]*xcursor-size[[:space:]]*\([0-9][0-9]*\).*/\1/p' "$cursor_kdl" | head -n1)
+    [[ -n "$parsed_theme" ]] && cursor_theme="$parsed_theme"
+    [[ -n "$parsed_size" ]] && cursor_size="$parsed_size"
+fi
+
 say "GTK, icon and cursor settings (gsettings)"
+echo "    color-scheme '$color_scheme' (Clavis theme.mode=$theme_mode)"
+echo "    cursor-theme '$cursor_theme' cursor-size $cursor_size"
 if [[ -n "${DBUS_SESSION_BUS_ADDRESS:-}" ]] && command -v gsettings >/dev/null; then
     gsettings set org.gnome.desktop.interface gtk-theme 'MacTahoe-Dark'
     gsettings set org.gnome.desktop.interface icon-theme 'MacTahoe-dark'
-    gsettings set org.gnome.desktop.interface cursor-theme 'MacTahoe-dark-cursors'
-    gsettings set org.gnome.desktop.interface cursor-size 24
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface cursor-theme "$cursor_theme"
+    gsettings set org.gnome.desktop.interface cursor-size "$cursor_size"
+    gsettings set org.gnome.desktop.interface color-scheme "$color_scheme"
     gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
 else
     warn "no D-Bus session bus; run again from inside a session to apply gsettings"
@@ -51,13 +75,13 @@ say "Folders"
 mkdir -p "$HOME/Pictures/mpv"
 
 say "Matugen colors from the current wallpaper"
-cfg="$HOME/.config/clavis/config.json"
 gen=/etc/xdg/quickshell/clavis/scripts/theme/generate_matugen_colors.sh
 if [[ -x "$gen" && -f "$cfg" ]] && command -v jq >/dev/null; then
     wp=$(jq -r '.wallpaper.path // empty' "$cfg")
     templates=$(jq -r '.theme.matugenTemplates // {} | to_entries | map(select(.value == true) | .key) | join(",")' "$cfg")
     if [[ -f "$wp" && -n "$templates" ]]; then
-        "$gen" --image "$wp" --mode dark --templates "$templates" | grep -v '^{' || true
+        echo "    mode $theme_mode"
+        "$gen" --image "$wp" --mode "$theme_mode" --templates "$templates" | grep -v '^{' || true
     else
         warn "wallpaper or templates not found; skipped"
     fi
