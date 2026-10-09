@@ -18,6 +18,9 @@ padding.x = 14
 padding.y = 14
 decorations = "None"
 
+[selection]
+save_to_clipboard = true
+
 [keyboard]
 bindings = [
 { key = "Insert", mods = "Shift", action = "Paste" },
