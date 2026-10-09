@@ -4,7 +4,9 @@ Configuración de un escritorio **niri + Clavis** (Quickshell) sobre Arch Linux 
 
 > Basado en el escritorio de **[StatIndet](https://github.com/StatIndet)** presentado en [r/unixporn](https://www.reddit.com/r/unixporn/s/4QCJSEDKQ7). Ver [Créditos y atribución](#créditos-y-atribución).
 
-▶️ **Showcase:** [`.github/showcase.mp4`](.github/showcase.mp4)
+[![Showcase](https://raw.githubusercontent.com/robert-flo/assets/main/niri-dotfiles/pr-4/showcase.webp)](https://github.com/robert-flo/assets/raw/main/niri-dotfiles/pr-4/showcase.mp4)
+
+▶️ Clic en la vista previa para ver el video completo (1080p).
 
 Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare): los archivos viven en su lugar dentro de `$HOME`.
 
