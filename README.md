@@ -30,7 +30,7 @@ Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare):
 
 ## Requisitos
 
-- `niri` (fork con minimizar y `background-effect blur`) y la shell **Clavis** con su CLI `key`.
+- `niri` (fork con minimizar y `background-effect blur`) y la shell **Clavis** con su CLI `key`. `key clipboard --daemon` existe en la rama `personal` de [robert-flo/PJ-NIRI-fo-key-cli](https://github.com/robert-flo/PJ-NIRI-fo-key-cli); con el `key` de upstream esa línea de `config.kdl` falla sin efectos (los servicios siguen arrancando el portapapeles).
 - Temas globales MacTahoe: iconos (`MacTahoe-dark`), cursores (`MacTahoe-dark-cursors`) y GTK (`MacTahoe-Dark`).
 - Paquetes: `mpv`, `thunderbird`, `obsidian`, `fish`, `alacritty`, `fcitx5`, `matugen`, `ttf-lxgw-wenkai-screen`, `ttf-jetbrains-mono-nerd`.
 
@@ -54,7 +54,7 @@ El script es idempotente y hace lo que no puede vivir en archivos versionados:
 
 - adapta a tu `$HOME` las rutas absolutas de `~/.config/clavis/config.json` (wallpaper) y `~/.config/obsidian/obsidian.json` (vault);
 - aplica `gsettings`: tema GTK, iconos, botones a la izquierda, y el modo claro/oscuro y el cursor leídos de la configuración de Clavis (`theme.mode` en `config.json` y `clavis/cursor.kdl`);
-- habilita los servicios de usuario `clavis-shell.service` y `clavis-clipboard.service` (son los que arrancan la barra y el portapapeles; `config.kdl` no los lanza para no duplicar la barra);
+- habilita los servicios de usuario `clavis-shell.service` y `clavis-clipboard.service` (son los que arrancan la barra y el portapapeles; `config.kdl` no lanza `qs` para no duplicar la barra, pero sí `key clipboard --daemon`, que no hace nada si el watcher ya corre y lo arranca si falta);
 - crea `~/Pictures/mpv` (capturas de mpv);
 - genera los colores Matugen desde el wallpaper y el modo claro/oscuro de Clavis (focus ring de niri, fcitx5 y fish);
 - valida la configuración de niri.
@@ -64,6 +64,8 @@ Si se ejecuta fuera de una sesión gráfica, avisa de lo que no pudo aplicar; ba
 ## Notas
 
 - `~/.config/niri/clavis/*.kdl` los gestiona Clavis desde su configuración; no editarlos a mano. El cursor de niri es `clavis/cursor.kdl` (el tema y el tamaño elegidos en los ajustes de Clavis); no hay un `cursor-theme.kdl` que lo pise.
+- Las salidas de pantalla (modo, escala, posición) son de cada máquina: van en `~/.config/niri/outputs.kdl`, que no se versiona. `config.kdl` lo incluye con `include optional=true`, así que si falta no pasa nada.
+- Flujo de cambios: se prueban en el usuario de pruebas (`sura`), se suben por PR a `master` y el usuario de producción (`niri`) hace `dotbare pull`. Si algo falla en `sura`, se borra y se recrea desde este repo.
 - El perfil de Thunderbird debe coincidir con `[Install…] Default=` de `~/.config/thunderbird/installs.ini`.
 - Para el CLI/SDK de Cursor, guarda la key en `~/.config/cursor/api-key` con `chmod 600`. Fish y bash la cargan en `CURSOR_API_KEY` solo si el archivo existe; `.config/cursor/` está en `.gitignore`.
 

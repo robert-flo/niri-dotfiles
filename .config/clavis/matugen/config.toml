@@ -9,7 +9,7 @@ output_path = "~/.local/share/fcitx5/themes/Matugen/theme.conf"
 [templates.fcitx5_panel]
 input_path = "~/.local/share/fcitx5-matugen-theme/templates/panel.svg"
 output_path = "~/.local/share/fcitx5/themes/Matugen/panel.svg"
-post_hook = "bash \"~/.local/share/fcitx5-matugen-theme/scripts/render-panel.sh\" \"$HOME/.local/share/fcitx5/themes/Matugen/panel.svg\" \"$HOME/.local/share/fcitx5/themes/Matugen/panel.png\""
+post_hook = "bash \"$HOME/.local/share/fcitx5-matugen-theme/scripts/render-panel.sh\" \"$HOME/.local/share/fcitx5/themes/Matugen/panel.svg\" \"$HOME/.local/share/fcitx5/themes/Matugen/panel.png\""
 
 [templates.fcitx5_highlight]
 input_path = "~/.local/share/fcitx5-matugen-theme/templates/highlight.svg"

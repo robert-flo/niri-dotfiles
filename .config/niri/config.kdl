@@ -273,7 +273,10 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 // Clavis shell and clipboard are started by clavis-shell.service and
 // clavis-clipboard.service (enabled by niri-dotfiles-postinstall).
-// Spawning them here as well runs a second bar.
+// Do not spawn qs here as well: it runs a second bar. key clipboard --daemon is
+// safe: it does nothing if the watcher already runs, otherwise it starts the unit
+// (or a detached watcher where the unit is missing).
+spawn-at-startup "key" "clipboard" "--daemon"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -656,3 +659,7 @@ include "liquidbird.kdl";
 include "statindet-animations.kdl";
 
 include "statindet-colors.kdl";
+
+// Machine-specific output layout (mode, scale, position). Not tracked; see the
+// playbook's i915 note. Herald OS's Display panel writes the same file.
+include optional=true "outputs.kdl";
