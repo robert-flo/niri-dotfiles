@@ -652,6 +652,9 @@ include "clavis/minimize-animation.kdl";
 
 include "clavis/hot-corners.kdl";
 
+// Must come before the per-app rules so their larger radii win.
+include "statindet-windowrule.kdl";
+
 include "obsidian-violet.kdl";
 
 include "liquidbird.kdl";
