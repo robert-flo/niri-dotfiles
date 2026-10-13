@@ -15,3 +15,14 @@ source "$OMARCHY_PATH/default/bash/rc"
 #
 # Make an alias for invoking commands you use constantly
 # alias p='python'
+
+# try: shared tries directory /zt (Omarchy's default/bash/init hardcodes ~/Work/tries,
+# which wins over TRY_PATH). Graduated tries still go to ~/Work.
+export TRY_PATH=/zt TRY_PROJECTS="$HOME/Work"
+if command -v try &> /dev/null; then
+  try() {
+    unset -f try
+    eval "$(SHELL=/bin/bash command try init /zt)"
+    try "$@"
+  }
+fi

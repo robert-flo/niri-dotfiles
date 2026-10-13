@@ -33,6 +33,7 @@ Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare):
 - `niri` (fork con minimizar y `background-effect blur`) y la shell **Clavis** con su CLI `key`. `key clipboard --daemon` existe en la rama `personal` de [robert-flo/PJ-NIRI-fo-key-cli](https://github.com/robert-flo/PJ-NIRI-fo-key-cli); con el `key` de upstream esa línea de `config.kdl` falla sin efectos (los servicios siguen arrancando el portapapeles).
 - Temas globales MacTahoe: iconos (`MacTahoe-dark`), cursores (`MacTahoe-dark-cursors`) y GTK (`MacTahoe-Dark`).
 - Paquetes: `mpv`, `thunderbird`, `obsidian`, `fish`, `alacritty`, `fcitx5`, `matugen`, `ttf-lxgw-wenkai-screen`, `ttf-jetbrains-mono-nerd`.
+- `try` (paquete `tobi-try` de Omarchy) clona en el directorio compartido `/zt` (bash y fish); los experimentos graduados van a `~/Work`. `/zt` lo crea el playbook (`root:wheel`, setgid, ACL por defecto para `wheel`); sin él, `try` no puede crear directorios.
 
 ## Instalación
 
