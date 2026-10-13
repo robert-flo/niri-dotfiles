@@ -14,7 +14,7 @@ Repositorio *bare* gestionado con [dotbare](https://github.com/kazhala/dotbare):
 
 | Ruta | Contenido |
 |---|---|
-| `.config/niri/` | `config.kdl`, fragmentos gestionados por Clavis (`clavis/*.kdl`, incluido el cursor), animaciones spring, focus ring con degradado, reglas de blur para Obsidian y Thunderbird |
+| `.config/niri/` | `config.kdl`, fragmentos gestionados por Clavis (`clavis/*.kdl`, incluido el cursor), animaciones spring, focus ring con degradado, esquinas redondeadas globales (`statindet-windowrule.kdl`), reglas de blur para Obsidian y Thunderbird |
 | `.config/clavis/` | `config.json` de Clavis y registro de plantillas Matugen propias (`matugen/config.toml`) |
 | `.local/share/statindet-niri/`, `.local/share/fcitx5-matugen-theme/`, `.local/share/clavis-fish-theme/` | plantillas Matugen: focus ring de niri, tema de fcitx5 y prompt de fish |
 | `.config/mpv/` | mpv con interfaz uosc personalizada (`hwdec=vaapi`) |

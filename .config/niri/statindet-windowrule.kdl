@@ -1,0 +1,9 @@
+// Global window rule from StatIndet's niri/windowrule.kdl.
+// Without it niri assumes square corners: client-side decorated windows get a
+// rectangular focus ring drawn behind them, and windows that do not round
+// themselves (Clavis settings) stay square.
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+    draw-border-with-background false
+}
