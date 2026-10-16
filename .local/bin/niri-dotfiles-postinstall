@@ -14,7 +14,7 @@ fi
 
 # Clavis config.json and obsidian.json need absolute paths; the repo ships them for /home/niri.
 say "Adapting absolute paths to $HOME"
-for f in "$HOME/.config/clavis/config.json" "$HOME/.config/obsidian/obsidian.json"; do
+for f in "$HOME/.config/clavis/config.json" "$HOME/.config/obsidian/obsidian.json" "$HOME/.config/environment.d/clavis-mpvpaper.conf"; do
     [[ -f "$f" ]] || continue
     if [[ "$HOME" != /home/niri ]] && grep -q '/home/niri' "$f"; then
         sed -i "s|/home/niri|$HOME|g" "$f"
@@ -72,7 +72,8 @@ else
 fi
 
 say "Folders"
-mkdir -p "$HOME/Pictures/mpv"
+mkdir -p "$HOME/Pictures/mpv" "$HOME/.local/share/clavis/wallpapers/video"
+chmod +x "$HOME/.local/bin/clavis-mpvpaper.sh" 2>/dev/null || true
 
 say "Matugen colors from the current wallpaper"
 gen=/etc/xdg/quickshell/clavis/scripts/theme/generate_matugen_colors.sh

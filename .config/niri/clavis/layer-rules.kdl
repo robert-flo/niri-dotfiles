@@ -3,6 +3,10 @@ layer-rule {
     match namespace="^clavis-overview-wallpaper$";
     place-within-backdrop true;
 }
+layer-rule {
+    match namespace="^mpvpaper$";
+    place-within-backdrop true;
+}
 layout {
     background-color "transparent";
 }
