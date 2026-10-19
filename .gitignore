@@ -1,8 +1,5 @@
 # Secrets: never commit
 .config/cursor/
 
-# Live wallpapers (copy locally; too large for git)
-.local/share/clavis/wallpapers/video/*.mp4
-.local/share/clavis/wallpapers/video/*.webm
-.local/share/clavis/wallpapers/video/*.mkv
-.local/share/clavis/wallpapers/video/*.mov
+# Video wallpaper backups (too large for git)
+.local/share/clavis/wallpapers/video_originals/

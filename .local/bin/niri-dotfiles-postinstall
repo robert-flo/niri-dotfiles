@@ -73,7 +73,7 @@ fi
 
 say "Folders"
 mkdir -p "$HOME/Pictures/mpv" "$HOME/.local/share/clavis/wallpapers/video"
-chmod +x "$HOME/.local/bin/clavis-mpvpaper.sh" 2>/dev/null || true
+chmod +x "$HOME/.local/bin/clavis-mpvpaper.sh" "$HOME/.local/share/clavis/wallpapers/video/optimize-wallpaper.sh" "$HOME/.local/bin/optimize-wallpaper" 2>/dev/null || true
 
 say "Matugen colors from the current wallpaper"
 gen=/etc/xdg/quickshell/clavis/scripts/theme/generate_matugen_colors.sh
